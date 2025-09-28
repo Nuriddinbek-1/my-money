@@ -3,17 +3,34 @@ import styles from "./Auth.module.css";
 
 function LogIn() {
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ email, password });
+    setEmail("");
+    setPassword("");
+  };
   return (
     <div className={styles.formWrapper}>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <h1 className={styles.title}>Log in</h1>
         <label>
           <span>Email:</span>
-          <input type="email" />
+          <input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
         </label>
         <label>
           <span>Password:</span>
-          <input type="password" />
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
         </label>
         {loading ? (
           <button className={styles.disabled} disabled>
