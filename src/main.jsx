@@ -2,13 +2,13 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { Toaster } from "sonner";
-import { GlobalContextProvider } from "./context/globalContext.jsx";
+import { ContextSupplier } from "./context/ContextSupplier.jsx";
 
 createRoot(document.getElementById("root")).render(
   <>
-    <GlobalContextProvider>
+    <ContextSupplier>
       <App />
-    </GlobalContextProvider>
+    </ContextSupplier>
     <Toaster position="bottom-center" />
   </>
 );

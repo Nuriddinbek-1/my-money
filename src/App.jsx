@@ -14,11 +14,12 @@ import LogIn from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 
-// Custom hooks
-import { useGlobalContext } from "./hooks/useGlobalContext";
+// Hooks
+import useGlobalContext from "./hooks/useGlobalContext";
 
 function App() {
-  const { user } = useGlobalContext();
+  const { state } = useGlobalContext();
+  const user = state.user;
   const routes = createBrowserRouter([
     {
       path: "/",
