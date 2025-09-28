@@ -1,5 +1,9 @@
 // React-router-dom
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
 // Layout
 import MainLayout from "./layouts/MainLayout";
@@ -8,26 +12,43 @@ import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+
+// Custom hooks
+import { useGlobalContext } from "./hooks/useGlobalContext";
 
 function App() {
+  const { user } = useGlobalContext();
   const routes = createBrowserRouter([
     {
       path: "/",
-      element: <MainLayout />,
+      element: (
+        <ProtectedRoutes user={user}>
+          <MainLayout />
+        </ProtectedRoutes>
+      ),
       children: [
         {
           index: true,
           element: <Home />,
         },
         {
-          path: "/login",
-          element: <LogIn />,
+          path: "/about",
+          element: <h1>About</h1>,
         },
         {
-          path: "/signup",
-          element: <SignUp />,
+          path: "/contact",
+          element: "/contact",
         },
       ],
+    },
+    {
+      path: "/login",
+      element: user ? <Navigate to={"/"} /> : <LogIn />,
+    },
+    {
+      path: "/signup",
+      element: user ? <Navigate to={"/"} /> : <SignUp />,
     },
   ]);
   return <RouterProvider router={routes} />;

@@ -1,10 +1,12 @@
 // Module css
+import { useFirestore } from "../hooks/useFirestore";
 import styles from "./TransactionsList.module.css";
 
 //React icons
 import { FaTrashAlt } from "react-icons/fa";
 
 function TransactionsList({ transactions }) {
+  const { deleteDocument } = useFirestore();
   return (
     <div>
       {transactions.map((transaction) => {
@@ -14,7 +16,7 @@ function TransactionsList({ transactions }) {
             <h4>{title}</h4>
             <p>{price}</p>
             <span className={styles.trash}>
-              <FaTrashAlt />
+              <FaTrashAlt onClick={() => deleteDocument(id)} />
             </span>
           </div>
         );
