@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import NotFound from "./pages/NotFound";
 
 // Hooks
 import useGlobalContext from "./hooks/useGlobalContext";
@@ -50,6 +51,10 @@ function App() {
     {
       path: "/signup",
       element: user ? <Navigate to={"/"} /> : <SignUp />,
+    },
+    {
+      path: "*",
+      element: <NotFound />,
     },
   ]);
   return state.waitAuth ? "" : <RouterProvider router={routes} />;

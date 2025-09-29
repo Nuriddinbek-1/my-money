@@ -18,7 +18,7 @@ function TransactionForm() {
     addDocument({
       title,
       price: Number(price),
-      id: state.user.uid,
+      uid: state.user.uid,
     });
     setTitle("");
     setPrice("");
