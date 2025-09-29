@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./Auth.module.css";
 import { createUser } from "../hooks/createUser";
+import { Link } from "react-router-dom";
 
 function SignUp() {
   const [loading, setLoading] = useState(false);
@@ -48,13 +49,18 @@ function SignUp() {
             value={password}
           />
         </label>
-        {loading ? (
-          <button className={styles.disabled} disabled>
-            Loading...
-          </button>
-        ) : (
-          <button>Sign up</button>
-        )}
+        <div className={styles.formSwitch}>
+          <p>
+            You have account? <Link to={"/login"}> Log in </Link>
+          </p>
+          {loading ? (
+            <button className={styles.disabled} disabled>
+              Loading...
+            </button>
+          ) : (
+            <button>Sign up</button>
+          )}
+        </div>
       </form>
     </div>
   );

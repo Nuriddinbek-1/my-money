@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Auth.module.css";
 import { loginUser } from "../hooks/loginUser";
 
@@ -35,13 +36,18 @@ function LogIn() {
             value={password}
           />
         </label>
-        {loading ? (
-          <button className={styles.disabled} disabled>
-            Loading...
-          </button>
-        ) : (
-          <button>Log in</button>
-        )}
+        <div className={styles.formSwitch}>
+          <p>
+            You are new? <Link to={"/signup"}>Sign up</Link>
+          </p>
+          {loading ? (
+            <button className={styles.disabled} disabled>
+              Loading...
+            </button>
+          ) : (
+            <button>Log in</button>
+          )}
+        </div>
       </form>
     </div>
   );

@@ -10,8 +10,6 @@ const changeState = (state, action) => {
       return { ...state, user: action.payload };
     case "LOGOUT":
       return { ...state, user: null };
-    case "AUTH_DONE":
-      return { ...state, waitAuth: false };
     default:
       return state;
   }
@@ -20,13 +18,11 @@ const changeState = (state, action) => {
 export const ContextSupplier = ({ children }) => {
   const [state, dispatch] = useReducer(changeState, {
     user: null,
-    waitAuth: true,
   });
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch({ type: "LOGIN", payload: user });
-        dispatch({ type: "AUTH_DONE" });
       } else {
       }
     });

@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
-import useGlobalContext from "../hooks/useGlobalContext";
 import { logoutUser } from "../hooks/logoutUser";
+import useGlobalContext from "../hooks/useGlobalContext";
 
 function Navbar() {
   const logout = logoutUser();

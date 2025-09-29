@@ -2,8 +2,10 @@ import { useState } from "react";
 import styles from "./TransactionForm.module.css";
 import { toast } from "sonner";
 import { useFirestore } from "../hooks/useFirestore";
+import useGlobalContext from "../hooks/useGlobalContext";
 
 function TransactionForm() {
+  const { state } = useGlobalContext();
   const { addDocument } = useFirestore();
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -16,6 +18,7 @@ function TransactionForm() {
     addDocument({
       title,
       price: Number(price),
+      id: state.user.uid,
     });
     setTitle("");
     setPrice("");
