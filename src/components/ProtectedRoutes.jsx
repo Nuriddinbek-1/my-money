@@ -4,7 +4,7 @@ function ProtectedRoutes({ user, children }) {
   if (user) {
     return children;
   } else {
-    <Navigate to={"/signup"} />;
+    return <Navigate to={"/signup"} replace />;
   }
 }
 

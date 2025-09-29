@@ -1,14 +1,17 @@
 import { useState } from "react";
 import styles from "./Auth.module.css";
+import { loginUser } from "../hooks/loginUser";
 
 function LogIn() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const login = loginUser();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, password });
+    login(email, password);
     setEmail("");
     setPassword("");
   };

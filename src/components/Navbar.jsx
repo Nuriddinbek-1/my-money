@@ -1,8 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
+import useGlobalContext from "../hooks/useGlobalContext";
+import { logoutUser } from "../hooks/logoutUser";
 
 function Navbar() {
-  const user = false;
+  const logout = logoutUser();
+  const { state } = useGlobalContext();
   return (
     <header className={styles.header}>
       <div className="container">
@@ -10,11 +13,11 @@ function Navbar() {
           myMoney
         </Link>
 
-        {user ? (
+        {state.user ? (
           <div className={styles.avatar}>
             <span>Hello Nuriddinbek</span>
             <img src="https://picsum.photos/100" alt="image" />
-            <button>Log out</button>
+            <button onClick={logout}>Log out</button>
           </div>
         ) : (
           <nav>

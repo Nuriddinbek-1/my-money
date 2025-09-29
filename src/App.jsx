@@ -52,7 +52,7 @@ function App() {
       element: user ? <Navigate to={"/"} /> : <SignUp />,
     },
   ]);
-  return <RouterProvider router={routes} />;
+  return state.waitAuth ? "" : <RouterProvider router={routes} />;
 }
 
 export default App;
