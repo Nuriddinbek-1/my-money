@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function SignUp() {
   const [loading, setLoading] = useState(false);
-  const [name, setName] = useState("");
+  const [displayName, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,7 +14,7 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    signup(name, email, password);
+    signup(displayName, email, password);
 
     setName("");
     setEmail("");
@@ -30,7 +30,7 @@ function SignUp() {
           <input
             type="text"
             onChange={(e) => setName(e.target.value)}
-            value={name}
+            value={displayName}
           />
         </label>
         <label>

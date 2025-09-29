@@ -15,7 +15,12 @@ function Navbar() {
 
         {state.user ? (
           <div className={styles.avatar}>
-            <span>Hello Nuriddinbek</span>
+            <span>
+              Hello{" "}
+              {state.user.displayName
+                ? state.user.displayName
+                : state.user.email}
+            </span>
             <img src="https://picsum.photos/100" alt="image" />
             <button onClick={logout}>Log out</button>
           </div>
